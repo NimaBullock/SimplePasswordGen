@@ -1,18 +1,3 @@
-#from werkzeug.security import generate_password_hash, check_password_hash
-
-def create_password(pw, app, size):
-	"""
-	Function used to generate a password for an application, given the global password and application's name and desired size of the output
-	input is the global password, application name, and desired password size
-	returns a single string to serve as a new password.
-	"""
-	pwhash = hash(pw)
-	apphash = hash(app)
-	sizeint = int(size)
-	scrambled = scrambler(str(abs(pwhash)), str(abs(apphash)))
-	resized = resizer(sizeint, scrambled)
-	return resized
-
 def scrambler(hash1, hash2):
 	"""
 	Function used to scramble characters in two strings to increase complexity of the resultant.

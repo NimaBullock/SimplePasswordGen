@@ -1,5 +1,5 @@
 import tkinter as tk
-import maincode as core
+import passwordgen as core
 
 def doPasswordGen():
 	"""
