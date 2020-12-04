@@ -7,4 +7,4 @@ This version of the password generator takes a single global password, as well a
 
 The hashes used are derived from the default hash function in python, and the simple gui is made with tkinter for increased visibility. Original design was to use the werkzeug.security library's hash generating functions, but was dropped in favor of increased simplicity.
 
-This password generator uses pythons included hashlib to generate a repeatably consistent password generation, given that the intial inputs remain the same, without having to locally store any actual information given. It should be noted, however, that these passwords generated are not immune to brute-force attempts to break in, 
+This password generator uses pythons included hashlib to generate a repeatably consistent password generation, given that the intial inputs remain the same, without having to locally store any actual information given. It should be noted, however, that these passwords generated are not immune to brute-force attempts to break in.
