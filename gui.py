@@ -2,15 +2,18 @@ import tkinter as tk
 import passwordgen as core
 
 def doPasswordGen():
-	"""
-	function used to create a password using the maincode.py create_password function.
-	"""
+	#function used to create a password using the maincode.py create_password function.
 	givenSize = entrySize.get()
 	givenPass = entryPass.get()
 	givenApp = entryApp.get()
 	genpass = core.create_password(givenPass, givenApp, givenSize)
 	genPassword["text"] = genpass
-
+	
+def doClipboardAppend():
+	#Function used to copy the generated password onto the clipboard
+	mainWindow.clipboard_clear()
+	mainWindow.clipboard_append(genPassword["text"])
+	mainWindow.update
 
 #window setup
 mainWindow = tk.Tk()
@@ -35,12 +38,17 @@ inputApp.grid(row=0,column=2,sticky="w")
 entryApp.grid(row=1,column=2,sticky="w")
 
 #create the button to generate the password.
-genButton = tk.Button(master=mainWindow, text="Generate Password", command=doPasswordGen)
+genButton = tk.Button(master=mainWindow, text="Generate Password", command=lambda:[doPasswordGen(),clipButton.grid()])
 outputFrame = tk.Frame(master=mainWindow)
 genPassLabel = tk.Label(master=outputFrame, text="Generated Password:")
 genPassword = tk.Label(master=outputFrame, text="")
 genPassLabel.grid(row=0,column=0,sticky="n")
 genPassword.grid(row=1,column=0,sticky="s")
+
+#create second button for adding output to clipboard
+clipButton = tk.Button(master=mainWindow, text="Add to clipboard", command=doClipboardAppend)
+clipButton.grid(row=3,column=0,sticky="s")
+clipButton.grid_forget()
 
 #make final layout using grid()
 inputFrame.grid(row=0, column=0, sticky="n")
